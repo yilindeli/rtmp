@@ -1,0 +1,16 @@
+version: '3'
+# example test in localhost
+# rtmp://localhost:1935/stream/living
+# ffplay http://localhost:8080/live/living.m3u8
+
+services:
+  app:
+    image: alfg/nginx-rtmp
+    ports:
+      - 1935:1935 # For Push: rtmp://<server ip>:1935/stream/$STREAM_NAME
+      - 8080:80   # For Pull: http://<server ip>:8080/live/$STREAM_NAME.m3u8
+
+# TODO: auth for push or use VPN.
+
+# @see https://github.com/alfg/docker-nginx-rtmp
+# Doc: https://christine.website/blog/rtmp-server-setup-2020-01-11
